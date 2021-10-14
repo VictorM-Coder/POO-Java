@@ -45,22 +45,25 @@ public class Teste {
         for (int cont = 0;cont < qntProdutos;cont++){
             if (chutes[cont] == valorProdutos[cont]){
                 acertosJogador1++;
-            }else if(escolhas[cont] == 'M' && chutes[cont] < valorProdutos[cont]){
-                acertosJogador2++;
-
-            }else if(escolhas[cont] == 'm' && chutes[cont] > valorProdutos[cont]){
-                acertosJogador2++;
+            }else {
+                if((escolhas[cont] == 'M' && chutes[cont] < valorProdutos[cont] || escolhas[cont] == 'm' && chutes[cont] > valorProdutos[cont])){
+                    acertosJogador2++;
+                }else{
+                    acertosJogador1++;
+                }
             }
 
         }
 
-        if (acertosJogador1 == acertosJogador2){
-            System.out.println("empate");
-        }else if (acertosJogador1 > acertosJogador2){
+        if (acertosJogador1 > acertosJogador2){
             System.out.println("primeiro");
+
+        }else if (acertosJogador1 == acertosJogador2){
+            System.out.println("empate");
         }else{
             System.out.println("segundo");
         }
+
 
         input.close();
     }
