@@ -1,7 +1,6 @@
-package dominio;
+package questoes.primeira.d;
 
-class DataSimples { // declaracao da classe
-
+public class DataSimples {
     byte dia, mes; // atributos ou campos
     short ano;
 
@@ -34,7 +33,12 @@ class DataSimples { // declaracao da classe
 
 
     void mostraData() {
-        System.out.println(dia + "/" + mes + "/" + ano);
+        if(this.dia == 0 || this.mes ==0 || this.ano==0){//verifica se os atributos são válidos
+            System.out.println("Data inválida!");
+        }else{
+            System.out.println(dia + "/" + mes + "/" + ano);
+        }
+
     }
 }
 
