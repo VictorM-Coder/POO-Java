@@ -9,11 +9,7 @@ public class HoraAproximada {
     }
 
     public String getHoraAproximada(){
-        return horas + ":" + minutos;
-    }
-
-    public int getHoras() {
-        return horas;
+        return this.horas + ":" + this.minutos;
     }
 
     public void setHoras(int horas) {
@@ -22,10 +18,6 @@ public class HoraAproximada {
         }else{
             avisarErroValorInvalido();
         }
-    }
-
-    public int getMinutos() {
-        return minutos;
     }
 
     public void setMinutos(int minutos) {

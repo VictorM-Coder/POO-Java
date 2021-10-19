@@ -5,17 +5,13 @@ public class HoraPrecisa {
     private int minutos;
     private int segundos;
     private int centesimosDeSegundos;
-
+    //adicionar construtor
     private void avisarErroValorInvalido(){
         System.out.println("Valor inválido! item não alterado");
     }
 
     public String getHoraAproximada(){
         return horas + ":" + minutos + ":" + segundos + ":" + centesimosDeSegundos;
-    }
-
-    public int getSegundos() {
-        return segundos;
     }
 
     public void setSegundos(int segundos) {
@@ -26,10 +22,6 @@ public class HoraPrecisa {
         }
     }
 
-    public int getCentesimosDeSegundos() {
-        return centesimosDeSegundos;
-    }
-
     public void setCentesimosDeSegundos(int centesimosDeSegundos) {
         if (centesimosDeSegundos >= 0 && centesimosDeSegundos <= 100){
             this.centesimosDeSegundos = centesimosDeSegundos;
@@ -38,20 +30,12 @@ public class HoraPrecisa {
         }
     }
 
-    public int getHoras() {
-        return horas;
-    }
-
     public void setHoras(int horas) {
         if (horas <= 23 && horas >= 0){
             this.horas = horas;
         }else{
             avisarErroValorInvalido();
         }
-    }
-
-    public int getMinutos() {
-        return minutos;
     }
 
     public void setMinutos(int minutos) {
