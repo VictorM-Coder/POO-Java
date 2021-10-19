@@ -1,8 +1,8 @@
 package teste01;
 
-import dominio.HoraAproximada;
+import questoes.primeira.a.HoraAproximada;
 
-public class Teste {
+public class TesteHora {
     public static void main(String[] args) {
         HoraAproximada horaAproximada = new HoraAproximada();
         horaAproximada.setHoras(22);

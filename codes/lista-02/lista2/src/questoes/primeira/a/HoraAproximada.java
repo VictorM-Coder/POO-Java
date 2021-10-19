@@ -1,4 +1,4 @@
-package dominio;
+package questoes.primeira.a;
 
 public class HoraAproximada {
     private int horas;
