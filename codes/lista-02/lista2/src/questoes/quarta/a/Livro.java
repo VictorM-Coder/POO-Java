@@ -16,36 +16,4 @@ public class Livro {
         this.autor = autor;
         this.sinopse = sinopse;
     }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public int getQntPaginas() {
-        return qntPaginas;
-    }
-
-    public void setQntPaginas(int qntPaginas) {
-        this.qntPaginas = qntPaginas;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getSinopse() {
-        return sinopse;
-    }
-
-    public void setSinopse(String sinopse) {
-        this.sinopse = sinopse;
-    }
 }

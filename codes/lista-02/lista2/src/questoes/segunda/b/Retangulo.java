@@ -19,7 +19,6 @@ public class Retangulo {
             this.vertices = vertices;
         }else{
             System.out.println("valores inválidos! o retângulo foi iniciado com valores padrão");
-            vertices[0].setX(0);
         }
     }
 }
