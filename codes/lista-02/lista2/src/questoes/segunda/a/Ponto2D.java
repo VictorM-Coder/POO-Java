@@ -11,8 +11,8 @@ public class Ponto2D {
         }
     }
 
-    public boolean paraleloEmUmaDasRetas(Ponto2D ponto){//verifica se o X ou(exclusivo) o Y é igual em dois pontos
-        if ((this.x == ponto.y) ^ (this.y == ponto.y)){
+    public boolean paraleloEmUmaDasRetas(Ponto2D ponto){//verifica se o X ou o Y é igual em dois pontos
+        if ((this.x == ponto.y) || (this.y == ponto.y)){
             return true;
         }else{
             return false;
@@ -27,5 +27,11 @@ public class Ponto2D {
         return "(" + this.x + ", " + this.y + ")";
     }
 
+    public float getX() {
+        return x;
+    }
 
+    public float getY() {
+        return y;
+    }
 }

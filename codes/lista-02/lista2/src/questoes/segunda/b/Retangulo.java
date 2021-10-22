@@ -3,22 +3,28 @@ package questoes.segunda.b;
 import questoes.segunda.a.Ponto2D;
 
 public class Retangulo {
-    Ponto2D[] vertices = new Ponto2D[4];
+    private Ponto2D pontoOpostoA;
+    private Ponto2D pontoOpostoB;
+    private Ponto2D pontoC, pontoD;
+    private float area;
 
-    public Retangulo(Ponto2D[] vertices) {
-        boolean pontosSaoIguais = false;
-        for (int cont = 0; cont < (vertices.length- 1); cont++){
-            if (vertices[cont].pontoEIgual(vertices[cont+1])){
-                pontosSaoIguais = true;
-                break;
-                //Adicionar um verificação de paralelismona classe pontos
-            }
-        }
-
-        if (!pontosSaoIguais){
-            this.vertices = vertices;
+    public Retangulo(Ponto2D pontoOpostoA, Ponto2D pontoOpostoB) {
+        if(!pontoOpostoA.paraleloEmUmaDasRetas(pontoOpostoB)){
+            this.pontoOpostoA = pontoOpostoA;
+            this.pontoOpostoB = pontoOpostoB;
         }else{
-            System.out.println("valores inválidos! o retângulo foi iniciado com valores padrão");
+            System.out.println("ERRO! os pontos são iguais! os valores foram definidos para o padrão A=(2, 2) e B = (4, 3)");
+            this.pontoOpostoA = new Ponto2D(2, 2);
+            this.pontoOpostoB = new Ponto2D(4, 3);
         }
+        this.pontoC = new Ponto2D(this.pontoOpostoA.getX(), this.pontoOpostoB.getY());
+        this.pontoD = new Ponto2D(this.pontoOpostoB.getX(), this.pontoOpostoA.getY());
+
+
+    }
+
+    public String toString(){
+        return "Pontos: A=" + this.pontoOpostoA.mostrarPonto() + ", B=" + this.pontoOpostoB.mostrarPonto()+
+                ", C=" + this.pontoC.mostrarPonto()+ ", D=" + this.pontoD.mostrarPonto();
     }
 }
