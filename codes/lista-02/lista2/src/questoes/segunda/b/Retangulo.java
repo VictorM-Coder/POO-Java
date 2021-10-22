@@ -6,10 +6,10 @@ public class Retangulo {
     private Ponto2D pontoOpostoA;
     private Ponto2D pontoOpostoB;
     private Ponto2D pontoC, pontoD;
-    private float area;
 
     public Retangulo(Ponto2D pontoOpostoA, Ponto2D pontoOpostoB) {
-        if(!pontoOpostoA.paraleloEmUmaDasRetas(pontoOpostoB)){
+
+        if(!pontoOpostoA.paraleloEmUmaDasRetas(pontoOpostoB)){//verifica se os pontos são opostos
             this.pontoOpostoA = pontoOpostoA;
             this.pontoOpostoB = pontoOpostoB;
         }else{
@@ -17,6 +17,7 @@ public class Retangulo {
             this.pontoOpostoA = new Ponto2D(2, 2);
             this.pontoOpostoB = new Ponto2D(4, 3);
         }
+        //atribui valores aos outro vértices do retângulo baseado na disposição de um retângulo em um plano cartesiano
         this.pontoC = new Ponto2D(this.pontoOpostoA.getX(), this.pontoOpostoB.getY());
         this.pontoD = new Ponto2D(this.pontoOpostoB.getX(), this.pontoOpostoA.getY());
 

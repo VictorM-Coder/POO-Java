@@ -20,16 +20,17 @@ public class DataPrecisa {
 
 
     boolean dataEhValida(byte dia, byte mes, short ano) {
-        if(dia > 31 || dia < 1 || mes > 12 || mes <0){
+        if(dia > 31 || dia < 1 || mes > 12 || mes <0 || ano < 0){//faz a genérica dos intervalos possíveis
             return false;
-        }else if(mes == 2){
-            if (((ano%4 ==0 && (ano%100!=0 || ano%400==0)) && dia == 29) || dia <= 28){
-                return true;
 
+        }else if(mes == 2){//analisa quando o mês é fevereiro
+            if (((ano%4 ==0 && (ano%100!=0 || ano%400==0)) && dia == 29) || dia <= 28){//Faz a verificação dos anos bissextos
+                return true;
             }else{
                 return false;
             }
-        }else if (!(mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12) && dia == 31){
+
+        }else if (!(mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12) && dia == 31){//faz a validação para meses com 30/31 dias
             return false;
         }
         return true;

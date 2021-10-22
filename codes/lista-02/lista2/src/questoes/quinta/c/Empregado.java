@@ -26,7 +26,7 @@ public class Empregado {
 
     public float calcularSalarioMensal(){
         float salario =  (this.horasNormaisTrabalhadasNoMes * this.salarioPorHoraNormal) + (this.salarioPorHoraExtra * this.horasExtrasTrabalhadasNoMes);
-        if (this.departamento.equals("Diretoria")){
+        if (this.departamento.equals("Diretoria")){//verifica se o funcionário é da diretoria adicionando 10% caso true
             salario+= salario*0.1;
         }
         return salario;
