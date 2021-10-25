@@ -1,7 +1,5 @@
 package questoes.terceira;
 
-import java.net.PortUnreachableException;
-
 public class Poligono {
     private int qntLados;
     private int qntVertices;
