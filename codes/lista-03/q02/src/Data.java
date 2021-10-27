@@ -129,4 +129,8 @@ public class Data {
         return this.bissexto;
     }
 
+    public String getMesExtenso(){
+        return this.mesExtenso;
+    }
+
 }
