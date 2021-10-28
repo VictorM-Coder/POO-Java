@@ -1,6 +1,10 @@
 public class Cadeira {
     private boolean ocupada;
 
+    Cadeira(){
+        this.ocupada = false;
+    }
+
     public void ocuparCadeira(){
         this.ocupada = true;
     }
@@ -12,4 +16,5 @@ public class Cadeira {
     public boolean isOcupada(){
         return this.ocupada;
     }
+
 }

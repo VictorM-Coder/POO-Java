@@ -7,23 +7,29 @@ public class Voo {
     Voo(int idVoo, Data data){
         this.idVoo = idVoo;
         this.data = data;
-        cadeira = new Cadeira[100];
         qntCadeirasOcupadas = 0;
+
+        cadeira = new Cadeira[100];
+        for (int cont = 0; cont < cadeira.length; cont++){
+            cadeira[cont] = new Cadeira();
+        }
+    }
+
+    public String toString(){
+        return "Voo: " + this.idVoo + "\n" + this.data + "\nCadeiras Ocupadas: " + this.qntCadeirasOcupadas;
     }
 
     public int proximoLivre(){
-        if (this.qntCadeirasOcupadas <= 100){
-            int idProximoLivre = 0;
-            while (!this.cadeira[idProximoLivre].isOcupada()){
-                idProximoLivre++;
+        if (this.qntCadeirasOcupadas < 100){
+            for (int cont = 0; cont < cadeira.length; cont++){
+                if (!this.cadeira[cont].isOcupada()){
+                    return cont;
+                }
             }
-
-            return idProximoLivre;
-        }else{
+        }
             System.out.println("Todas as cadeiras já foram ocupadas!");
             return -1;
         }
-    }
 
     public boolean verifica(int idCadeira){
         return this.cadeira[idCadeira].isOcupada();
@@ -32,7 +38,6 @@ public class Voo {
     public boolean ocupa(int idCadeira){
         if (idCadeira >= 0 && idCadeira <= 99){
             if (this.cadeira[idCadeira].isOcupada()){
-                System.out.println("esta cadeira já está ocupada");
                 return false;
             }else {
                 this.cadeira[idCadeira].ocuparCadeira();

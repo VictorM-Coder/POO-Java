@@ -1,2 +1,117 @@
+
 public class Data {
+    private static final String[] mesesPorExtenso = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+
+    private byte dia, mes;
+    private short ano;
+    private boolean bissexto;
+    private String mesExtenso;
+
+    Data(byte dia, byte mes, short ano){
+        if (this.dataEhValida(dia, mes, ano)){
+            this.dia = dia;
+            this.mes = mes;
+            this.ano = ano;
+        }else {
+            System.out.println("Valor inválido! valores Default atribuídos");
+            this.dia = 1;
+            this.mes = 1;
+            this.ano = 1;
+        }
+
+        if ((ano%4 ==0 && (ano%100!=0 || ano%400==0))){
+            this.bissexto = true;
+        }else{
+            this.bissexto = false;
+        }
+
+        this.mesExtenso = this.definirMesExtenso(this.mes);
+    }
+
+    public  Data clone(){
+        return new Data(this.dia, this.mes, this.ano);
+    }
+
+    public String toString(){
+        return String.format("Data: %d de %s de %d", this.dia, this.mesExtenso, this.ano);
+    }
+
+    public byte compara(Data dataComparada){
+        if (this.ehIgual(dataComparada)){
+            return 0;
+        }else if (this.ehMaior(dataComparada)){
+            return 1;
+        }else{
+            return -1;
+        }
+    }
+
+    private String definirMesExtenso(byte mes){
+        return mesesPorExtenso[mes-1];
+    }
+
+    private boolean ehIgual(Data dataComparada){
+        if (this.dia == dataComparada.getDia() && this.mes == dataComparada.getMes() && this.ano == dataComparada.getAno()){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    private boolean ehMaior(Data dataComparada){
+        boolean dataEhIgual = false;
+
+        if (this.ehIgual(dataComparada)){
+            return false;
+        }
+
+        if(this.ano > dataComparada.getAno()){
+            dataEhIgual = true;
+        }else if (this.ano == dataComparada.getAno()){
+            if (this.mes > dataComparada.getMes()){
+                dataEhIgual = true;
+            }else if (this.mes == dataComparada.getMes()){
+                if (this.dia > dataComparada.getDia()){
+                    dataEhIgual = true;
+                }
+            }
+        }
+        return dataEhIgual;
+    }
+
+    private boolean dataEhValida(byte dia, byte mes, short ano) {
+        boolean ehValida = false;
+        if(dia <= 31 && dia >= 1 && mes >= 1 && mes <= 12 && ano >= 1){
+            if(mes == 2){
+                if ((ano%4 ==0 && (ano%100!=0 || ano%400==0)) && dia <= 29){
+                    ehValida = true;
+                }
+            }else if ((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12) && dia <= 31){
+                ehValida = true;
+            }else if (mes <= 30){
+                ehValida = true;
+            }
+        }
+        return ehValida;
+    }
+    public byte getDia(){
+        return this.dia;
+    }
+
+    public byte getMes(){
+        return  this.mes;
+    }
+
+    public short getAno(){
+        return this.ano;
+    }
+
+    public boolean isBissexto() {
+        return this.bissexto;
+    }
+
+    public String getMesExtenso(){
+        return this.mesExtenso;
+    }
+
 }

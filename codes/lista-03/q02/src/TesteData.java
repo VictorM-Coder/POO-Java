@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TesteData {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        System.out.println("Olá, seja bem-vindo ao nosso sistema dde análise da datas \nVamos começar informando o dia:");
+        System.out.println("Olá, seja bem-vindo ao nosso sistema de análise da datas \nVamos começar informando o dia:");
         byte dia = input.nextByte();
         System.out.println("Agora o mês:");
         byte mes = input.nextByte();
@@ -34,7 +34,33 @@ public class TesteData {
             Short ano2 = input.nextShort();
 
             Data data2 = new Data(dia2, mes2, ano2);
+            System.out.println("----------------------------------------");
+
+            System.out.println(data2);
+            switch (data2.compara(data)){
+                case 1:
+                    System.out.println("Esta Data é maior que a primeira");
+                    break;
+                case 0:
+                    System.out.println("Esta data é igual a primeira");
+                    break;
+                case -1:
+                    System.out.println("Esta data é menor que a primeira");
+                    break;
+            }
         }
+
+        System.out.println("----------------------------------------");
+        System.out.println("Deseja criar um clone da primeira data?[Para SIM digite 1, e para NÃO entre qualquer outro número]");
+        int flag2 = input.nextInt();
+
+        if (flag2 == 1){
+            Data dataClonada = data.clone();
+            System.out.println("Data Clonada com sucesso! \n" + dataClonada);
+        }
+        System.out.println("----------------------------------------");
+
+        System.out.println("Fim do programa, obrigado pelo uso :)");
         input.close();
     }
 }

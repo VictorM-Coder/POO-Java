@@ -19,7 +19,7 @@ os mesmos valores de atributos e retorna sua referencia pelo metodo. ´
 acima. Demonstre o uso de todas as operacoes.
  */
 public class Data {
-    private static String[] mesesPorExtenso = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
+    private static final String[] mesesPorExtenso = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
 
     private byte dia, mes;
     private short ano;
