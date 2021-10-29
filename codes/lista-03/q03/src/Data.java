@@ -13,7 +13,7 @@ public class Data {
             this.mes = mes;
             this.ano = ano;
         }else {
-            System.out.println("Valor inválido! valores Default atribuídos");
+            System.out.println("Valor inválido! valores Default atribuídos a data");
             this.dia = 1;
             this.mes = 1;
             this.ano = 1;
