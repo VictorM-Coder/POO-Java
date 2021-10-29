@@ -1,7 +1,7 @@
 public class Voo {
     private int idVoo = 0;
     private int qntCadeirasOcupadas;
-    private Cadeira[] cadeira;
+    private Cadeira[] cadeira;//criei um objeto para cadeira, pois achei que facilitaria a sua manipulação
     private Data data;
 
     Voo(int idVoo, Data data){
@@ -31,13 +31,13 @@ public class Voo {
             return -1;
         }
 
-    public boolean verifica(int idCadeira){
+    public boolean verifica(int idCadeira){//esse método é utilizado dentro do método ocupa, assim ao chamar um, chama-se os dois
         return this.cadeira[idCadeira].isOcupada();
     }
 
     public boolean ocupa(int idCadeira){
         if (idCadeira >= 0 && idCadeira <= 99){
-            if (this.cadeira[idCadeira].isOcupada()){
+            if (this.verifica(idCadeira)){
                 return false;
             }else {
                 this.cadeira[idCadeira].ocuparCadeira();
