@@ -6,11 +6,11 @@ public class NumeroComplexo {
     public void inicializaNumero(double a, double b){
         this.a = a;
         this.b = b;
-        this.bi = "(" + b + "i)";
+        this.bi = (b >= 0)? b + "i": "(" + b + "i)";//usa parênteses para valores negativos
     }
 
     public void imprimeNumero(){
-        System.out.println(this.a + " + " + this.bi);
+        System.out.println("(" + this.a + " + " + this.bi + ")");
     }
 
     public boolean ehIgual(NumeroComplexo numeroComplexo){
@@ -50,7 +50,7 @@ public class NumeroComplexo {
 
     public NumeroComplexo divide(NumeroComplexo num2){
         double aSaida = ((this.a * num2.a) + (this.b * num2.b)) / (Math.pow(num2.a, 2) + Math.pow(num2.b, 2));
-        double bSaida = (this.b * num2.a) - (this.a * num2.b) / (Math.pow(num2.a, 2) + Math.pow(num2.b, 2));
+        double bSaida = ((this.b * num2.a) - (this.a * num2.b)) / (Math.pow(num2.a, 2) + Math.pow(num2.b, 2));
 
         NumeroComplexo numeroResultado = new NumeroComplexo();
         numeroResultado.inicializaNumero(aSaida, bSaida);
