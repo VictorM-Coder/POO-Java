@@ -11,7 +11,7 @@ public class Voo {
 
         cadeira = new Cadeira[100];
         for (int cont = 0; cont < cadeira.length; cont++){
-            cadeira[cont] = new Cadeira();
+            cadeira[cont] = new Cadeira();//instancia todas as cadeiras necessárias
         }
     }
 

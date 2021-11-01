@@ -19,6 +19,7 @@ os mesmos valores de atributos e retorna sua referencia pelo metodo. ´
 acima. Demonstre o uso de todas as operacoes.
  */
 public class Data {
+    //Constante com os nomes dos meses
     private static final String[] mesesPorExtenso = {"Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"};
 
     private byte dia, mes;
@@ -77,6 +78,9 @@ public class Data {
         }
     }
 
+    /*este é um método que analise se uma data é maior que outra,
+    eu o criei para tornar o código mais limpo, reduzindo as atividades realizadas por funções
+    */
     private boolean ehMaior(Data dataComparada){
         boolean dataEhIgual = false;
 
@@ -100,19 +104,21 @@ public class Data {
 
     private boolean dataEhValida(byte dia, byte mes, short ano) {
         boolean ehValida = false;
-        if(dia <= 31 && dia >= 1 && mes >= 1 && mes <= 12 && ano >= 1){
-            if(mes == 2){
-                if ((ano%4 ==0 && (ano%100!=0 || ano%400==0)) && dia <= 29){
+        if(dia <= 31 && dia >= 1 && mes >= 1 && mes <= 12 && ano >= 1){//verifica o intervalo genérico
+            if(mes == 2){//faz a verificação caso seja fevereiro
+                if ((ano%4 == 0 && (ano%100!=0 || ano%400==0)) && dia <= 29){
                     ehValida = true;
                 }
-            }else if ((mes == 1 || mes == 3 || mes == 5 || mes == 7 || mes ==8 || mes == 10 || mes == 12) && dia <= 31){
+            }else if (( mes == 4 || mes == 6 || mes == 9 || mes == 11) && (dia <= 30)){//analisa os meses com 30 dias
                 ehValida = true;
-            }else if (mes <= 30){
+            }else if (!( mes == 4 || mes == 6 || mes == 9 || mes == 11)){//analisa os meses com 31 dias
                 ehValida = true;
             }
         }
         return ehValida;
     }
+
+    //métodos getters
     public byte getDia(){
         return this.dia;
     }
