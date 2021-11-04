@@ -1,4 +1,4 @@
-package questao1;
+package car;
 /*
 INICIAR
 Iniciar de tanque vazio, sem ninguém dentro e com 0 de quilometragem.

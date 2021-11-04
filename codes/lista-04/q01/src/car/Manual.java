@@ -1,4 +1,4 @@
-package questao1;
+package car;
 
 public class Manual {
     public static void main(String[] args) {

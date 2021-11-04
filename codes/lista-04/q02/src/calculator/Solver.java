@@ -1,9 +1,11 @@
-package questao2;
+package calculator;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Solver {
     public static void main(String[] args) {
+        Locale.setDefault(Locale.US);
         Scanner scanner = new Scanner(System.in);
         Calculator calc = new Calculator(0);
         while(true){
