@@ -43,7 +43,6 @@ public class Motorcycle{
     public void drive(int time){
         if (this.isPerson()){
             if (this.person.getAge() <= 10){
-
                 //pode passear
                 if (this.time == 0){
                     System.out.println("fail: tempo zerado");
@@ -72,7 +71,7 @@ public class Motorcycle{
         }
     }
 
-    private boolean isPerson(){
+    private boolean isPerson(){//checa se person é nulo
         if (this.person == null){
             System.out.println("fail: moto vazia");
             return false;

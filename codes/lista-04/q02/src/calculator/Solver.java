@@ -24,7 +24,11 @@ public class Solver {
                 calc.sum(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]));
             } else if(ui[0].equals("div")) {//value value
                 calc.division(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]));
-            } else {
+            } else if(ui[0].equals("mult")){
+                calc.multiply(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]));
+            }else if(ui[0].equals("sub")){
+                calc.subtract(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]));
+            }else{
                 System.out.println("fail: comando invalido");
             }
         }
