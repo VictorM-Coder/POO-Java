@@ -8,6 +8,8 @@ public class Pet {
     private boolean alive;
 
     public Pet(int energy, int hungry, int clean){
+        this.alive = true;
+
         this.energyMax = energy;
         this.hungryMax = hungry;
         this.cleanMax = clean;
@@ -22,25 +24,50 @@ public class Pet {
 
     public String toString(){
         return "E:" + this.energy + "/" + this.energyMax + ", S:" + this.hungry + "/" + this.hungryMax + ", L:"
-                + this.clean + "/" + this.cleanMax + ", D:" + this.diamonds + ", I:" + this.age;
+                + this.clean + "/" + this.cleanMax + ", D:" + this.diamonds + ", I:" + this.age + "\n";
     }
     
     // Invoca o método testAlive para verificar se o pet esta vivo
     // Se estiver vivo, altere os atributos utilizando os métodos set e get
     public void play(){
-
+        if (this.testAlive()){
+            this.setEnergy(this.energy - 2);
+            this.setHungry(this.hungry - 1);
+            this.setClean(this.clean - 3);
+            this.diamonds+=1;
+            this.age++;
+        }
     }
 
     public void shower(){
-
+        if (this.testAlive()){
+            this.setEnergy(this.energy - 3);
+            this.setHungry(this.hungry - 1);
+            this.setClean(this.cleanMax);
+            this.age+=2;
+        }
     }
 
     public void eat(){
-
+        if (this.testAlive()){
+            this.setEnergy(this.energy - 1);
+            this.setHungry(this.hungry + 4);
+            this.setClean(this.clean - 2);
+            this.age++;
+        }
     }
 
     public void sleep(){
+        if (this.testAlive()){
+            if ((this.energyMax - this.energy >= 5)){
+                this.age += this.energyMax - this.energy;
+                this.setHungry(this.hungry - 1);
+                this.setEnergy(this.energyMax);
+            }else{
+                System.out.println("fail: nao esta com sono");
+            }
 
+        }
     }
 
     private int returnAtributeBasedOnMax(int value, int maxValue){
@@ -78,7 +105,7 @@ public class Pet {
     }
 
     void setClean(int value){
-        this.clean = this.returnAtributeBasedOnMax(value, this.hungryMax);
+        this.clean = this.returnAtributeBasedOnMax(value, this.cleanMax);
 
         if (this.clean == 0){
             this.alive = false;
@@ -114,7 +141,6 @@ public class Pet {
         if (!this.alive){
             System.out.println("fail: pet esta morto");
         }
-        
         return this.alive;
     }
 
