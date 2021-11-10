@@ -20,16 +20,33 @@ public class Solver{
                 for(Integer value : vet)
                     System.out.print(value + " ");
                 System.out.print("]\n");
+
             } else if(cmd.equals("rshow")) {
+                System.out.print("[ ");
+                for (int cont = (vet.size() - 1); cont >= 0; cont--){
+                    System.out.print(vet.get(cont) + " ");
+                }
+                System.out.print("]\n");
+
             } else if(cmd.equals("add")) {
                 for(int i = 1; i < ui.length; i++)
                     vet.add(Integer.parseInt(ui[i]));
+
             } else if(cmd.equals("find")) {
+
             } else if(cmd.equals("get")) {
+                ArrayListVerificator.getItemByIndex(Integer.parseInt(ui[1]), vet);
+
             } else if(cmd.equals("set")) {
+                ArrayListVerificator.setItemByIndex(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]), vet);
+
             } else if(cmd.equals("ins")) {
+
             } else if(cmd.equals("rmi")) {
+               ArrayListVerificator.removeItemByIndex(Integer.parseInt(ui[1]), vet);
+
             } else if(cmd.equals("rma")) {
+                ArrayListVerificator.removeAllElements(Integer.parseInt(ui[1]), vet);
             } else {
                 System.out.print("fail: command not found\n");
             }
