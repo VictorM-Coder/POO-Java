@@ -2,11 +2,14 @@ import java.util.ArrayList;
 /*
 *Eu optei,por fins de organização, em criar uma classe separada para implementar as funções usadas na solver.
 *então as declarei aqui com o modificador estático.
+* o principal objetivo desta classe é realizar os testes de verificação de intervalo
  */
 public class ArrayListVerificator {
     public static void removeItemByIndex(int index, ArrayList<Integer> vet){
         if (checkInterval(index, vet)){
             vet.remove(index);
+        }else{
+            System.out.println("fail");
         }
     }
 
@@ -31,11 +34,20 @@ public class ArrayListVerificator {
         }
     }
 
+    public static void insertElementByIndex(int index, int element, ArrayList<Integer> vet){
+        if (index >= 0){
+            if (index >= vet.size()){
+                vet.add(element);
+            }else{
+                vet.add(index, element);
+            }
+        }
+    }
+
     private static boolean checkInterval(int index, ArrayList<Integer> vet){
         if (index >= 0 && index < vet.size()){
             return true;
         }else {
-            System.out.println("fail: esta posicao nao existe");
             return false;
         }
     }

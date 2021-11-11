@@ -33,6 +33,11 @@ public class Solver{
                     vet.add(Integer.parseInt(ui[i]));
 
             } else if(cmd.equals("find")) {
+                String indexsPositions = "[ ";
+                for(int cont = 1; cont < ui.length; cont++){
+                    indexsPositions += vet.indexOf(Integer.parseInt(ui[cont])) + " ";
+                }
+                System.out.println(indexsPositions + "]");
 
             } else if(cmd.equals("get")) {
                 ArrayListVerificator.getItemByIndex(Integer.parseInt(ui[1]), vet);
@@ -41,6 +46,7 @@ public class Solver{
                 ArrayListVerificator.setItemByIndex(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]), vet);
 
             } else if(cmd.equals("ins")) {
+                ArrayListVerificator.insertElementByIndex(Integer.parseInt(ui[1]), Integer.parseInt(ui[2]), vet);
 
             } else if(cmd.equals("rmi")) {
                ArrayListVerificator.removeItemByIndex(Integer.parseInt(ui[1]), vet);
