@@ -1,8 +1,10 @@
+package arraymestre;
+
 import java.util.ArrayList;
 /*
-*Eu optei,por fins de organização, em criar uma classe separada para implementar as funções usadas na solver.
-*então as declarei aqui com o modificador estático.
-* o principal objetivo desta classe é realizar os testes de verificação de intervalo
+* o principal objetivo desta classe é realizar os testes de verificação antes de realizar os métodos
+* OBS.:Eu optei,por fins de organização, em criar uma classe separada para implementar as funções usadas na solver.
+ *então as declarei aqui com o modificador estático.
  */
 public class ArrayListVerificator {
     public static void removeItemByIndex(int index, ArrayList<Integer> vet){

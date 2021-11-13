@@ -1,4 +1,4 @@
-import tamagotchi.Pet;
+package tamagotchi;
 
 import java.util.Scanner;
 

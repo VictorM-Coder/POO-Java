@@ -8,15 +8,30 @@ public class Pet {
     private boolean alive;
 
     public Pet(int energy, int hungry, int clean){
-        this.alive = true;
+        if (energy > 0 && hungry > 0 && clean > 0){
+            this.alive = true;
 
-        this.energyMax = energy;
-        this.hungryMax = hungry;
-        this.cleanMax = clean;
-        
-        this.setEnergy(energy);
-        this.setHungry(hungry);
-        this.setClean(clean);
+            this.energyMax = energy;
+            this.hungryMax = hungry;
+            this.cleanMax = clean;
+
+            this.energy = energy;
+            this.hungry = hungry;
+            this.clean = clean;
+        }else {
+            this.alive = false;
+
+            this.energyMax = 0;
+            this.hungryMax = 0;
+            this.cleanMax = 0;
+
+            this.energy = 0;
+            this.hungry = 0;
+            this.clean = 0;
+        }
+
+
+
         
         this.age = 0;
         this.diamonds = 0;
@@ -34,7 +49,7 @@ public class Pet {
             this.setEnergy(this.energy - 2);
             this.setHungry(this.hungry - 1);
             this.setClean(this.clean - 3);
-            this.diamonds+=1;
+            this.diamonds++;
             this.age++;
         }
     }
@@ -70,32 +85,20 @@ public class Pet {
         }
     }
 
-    private int returnAtributeBasedOnMax(int value, int maxValue){
-        if (value <= 0){
-            return 0;
-        }else if (value > maxValue){
-            return maxValue;
-        }else{
-            return value;
-        }
-    }
-
     // Atribui o valor de energia
     // Se o valor ficar abaixo de 0, o pet morre de fraqueza
     // Garanta que os valores ficarão no interalo 0 - max
     // Use esse modelo para fazer os outros métodos set
-    void setEnergy(int value) {
-        if (value <= 0) {
-            this.energy = 0;
-            System.out.println("fail: pet morreu de fraqueza");
+    public void setEnergy(int value) {//OBS.:tomei a liberdade de reformular a lógica para algo que achei interessente
+        this.energy = this.returnAtributeBasedOnMax(value, this.energyMax);
+
+        if (this.energy == 0){
             this.alive = false;
-        } else if (value > this.energyMax)
-            this.energy = this.energyMax;
-        else
-            this.energy = value;
+            System.out.println("fail: pet morreu de fraqueza");
+        }
     }
 
-    void setHungry(int value){
+    public void setHungry(int value){
        this.hungry = this.returnAtributeBasedOnMax(value, this.hungryMax);
 
        if (this.hungry == 0){
@@ -104,37 +107,13 @@ public class Pet {
        }
     }
 
-    void setClean(int value){
+    public void setClean(int value){
         this.clean = this.returnAtributeBasedOnMax(value, this.cleanMax);
 
         if (this.clean == 0){
             this.alive = false;
             System.out.println("fail: pet morreu de sujeira");
         }
-    }
-
-    int getClean(){
-        return this.clean;
-    }
-
-    int getHungry(){
-        return this.hungry;
-    }
-
-    int getEnergy(){
-        return this.energy;
-    }
-
-    int getEnergyMax(){
-        return this.energyMax;
-    }
-
-    int getCleanMax(){
-        return this.cleanMax;
-    }
-
-    int getHungryMax(){
-        return this.hungryMax;
     }
 
     public boolean testAlive(){
@@ -144,5 +123,19 @@ public class Pet {
         return this.alive;
     }
 
-
+    /**
+     * Garante que o valor esteja dentro intervalo possível
+     * @param value
+     * @param maxValue
+     * @return se value < 0, return = 0, se value > maXValue, retorna maxValue, senão return = value
+     */
+    private int returnAtributeBasedOnMax(int value, int maxValue){
+        if (value <= 0){
+            return 0;
+        }else if (value > maxValue){
+            return maxValue;
+        }else{
+            return value;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package tamagotchi;
 
-class Manual {
+public class Manual {
     public static void main(String[] args) {
         //case inicio
         Pet pet = new Pet(20, 10, 15);
