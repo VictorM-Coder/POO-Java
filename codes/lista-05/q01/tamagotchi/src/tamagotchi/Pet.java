@@ -29,9 +29,6 @@ public class Pet {
             this.hungry = 0;
             this.clean = 0;
         }
-
-
-
         
         this.age = 0;
         this.diamonds = 0;
@@ -39,7 +36,7 @@ public class Pet {
 
     public String toString(){
         return "E:" + this.energy + "/" + this.energyMax + ", S:" + this.hungry + "/" + this.hungryMax + ", L:"
-                + this.clean + "/" + this.cleanMax + ", D:" + this.diamonds + ", I:" + this.age + "\n";
+                + this.clean + "/" + this.cleanMax + ", D:" + this.diamonds + ", I:" + this.age;
     }
     
     // Invoca o método testAlive para verificar se o pet esta vivo
@@ -75,9 +72,9 @@ public class Pet {
     public void sleep(){
         if (this.testAlive()){
             if ((this.energyMax - this.energy >= 5)){
-                this.age += this.energyMax - this.energy;
                 this.setHungry(this.hungry - 1);
                 this.setEnergy(this.energyMax);
+                this.age++;
             }else{
                 System.out.println("fail: nao esta com sono");
             }
@@ -89,34 +86,34 @@ public class Pet {
     // Se o valor ficar abaixo de 0, o pet morre de fraqueza
     // Garanta que os valores ficarão no interalo 0 - max
     // Use esse modelo para fazer os outros métodos set
-    public void setEnergy(int value) {//OBS.:tomei a liberdade de reformular a lógica para algo que achei interessente
-        this.energy = this.returnAtributeBasedOnMax(value, this.energyMax);
+    private void setEnergy(int value) {//OBS.:tomei a liberdade de reformular a lógica para algo que achei interessente
+        this.energy = this.returnAtributeBasedOnMax(value, this.getEnergyMax());
 
-        if (this.energy == 0){
+        if (this.getEnergy() == 0){
             this.alive = false;
             System.out.println("fail: pet morreu de fraqueza");
         }
     }
 
-    public void setHungry(int value){
-       this.hungry = this.returnAtributeBasedOnMax(value, this.hungryMax);
+    private void setHungry(int value){
+       this.hungry = this.returnAtributeBasedOnMax(value, this.getHungryMax());
 
-       if (this.hungry == 0){
+       if (this.getHungry() == 0){
            this.alive = false;
            System.out.println("fail: pet morreu de fome");
        }
     }
 
-    public void setClean(int value){
-        this.clean = this.returnAtributeBasedOnMax(value, this.cleanMax);
+    private void setClean(int value){
+        this.clean = this.returnAtributeBasedOnMax(value, this.getCleanMax());
 
-        if (this.clean == 0){
+        if (this.getClean() == 0){
             this.alive = false;
             System.out.println("fail: pet morreu de sujeira");
         }
     }
 
-    public boolean testAlive(){
+    private boolean testAlive(){
         if (!this.alive){
             System.out.println("fail: pet esta morto");
         }
@@ -137,5 +134,29 @@ public class Pet {
         }else{
             return value;
         }
+    }
+
+    private int getEnergyMax() {
+        return energyMax;
+    }
+
+    private int getHungryMax() {
+        return hungryMax;
+    }
+
+    private int getCleanMax() {
+        return cleanMax;
+    }
+
+    private int getEnergy() {
+        return energy;
+    }
+
+    private int getHungry() {
+        return hungry;
+    }
+
+    private int getClean() {
+        return clean;
     }
 }
