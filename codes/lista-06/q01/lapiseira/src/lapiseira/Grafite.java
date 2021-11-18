@@ -9,11 +9,10 @@ public class Grafite {
         this.calibre = calibre;
         this.dureza = dureza;
         this.tamanho = tamanho;
-
     }
 
     public String toString(){
-        return "[" + this.calibre + ":" + this.dureza + ":" + this.tamanho;
+        return "[" + this.calibre + ":" + this.dureza + ":" + this.tamanho + "]";
     }
 
     public int desgastePorFolha(){
@@ -33,5 +32,13 @@ public class Grafite {
 
     public float getCalibre() {
         return calibre;
+    }
+
+    public void setTamanho(int tamanho){
+        this.tamanho = tamanho;
+    }
+
+    public int getTamanho() {
+        return tamanho;
     }
 }

@@ -8,15 +8,23 @@ public class Lapiseira {
     private ArrayList<Grafite> tambor;
 
     public Lapiseira(float calibre){
-
+        this.calibre = calibre;
     }
 
+    //ajustar o toString do grafite para quando for null retornar uma String vazia
     public String toString(){
-        return "";
+        return "calibre: " + this.calibre + ", bico: " + this.bico + ", tambor: {" + this.tambor + "}";
     }
 
     public boolean inserir(Grafite grafite){
-        return false;
+        if (this.calibre == grafite.getCalibre()){
+            this.tambor.add(grafite);
+
+            return true;
+        }else{
+            System.out.println("fail: calibre incompatível");
+            return false;
+        }
     }
 
     public Grafite remover(){
