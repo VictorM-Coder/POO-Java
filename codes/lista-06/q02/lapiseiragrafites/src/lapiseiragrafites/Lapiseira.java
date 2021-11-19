@@ -9,17 +9,20 @@ public class Lapiseira {
 
     public Lapiseira(float calibre){
         this.calibre = calibre;
+        tambor = new ArrayList<Grafite>();
     }
 
     //ajustar o toString do grafite para quando for null retornar uma String vazia
     public String toString(){
-        return "calibre: " + this.calibre + ", bico: " + this.bico + ", tambor: {" + this.tambor + "}";
+        String valorBico = (this.grafiteEstaCarregado())?this.bico.toString() : "[]";
+        String valorTambor = (!this.tambor.isEmpty())?this.tambor.toString() : "";
+
+        return "calibre: " + this.calibre + ", bico: " + valorBico + ", tambor: {" + valorTambor + "}";
     }
 
     public boolean inserir(Grafite grafite){
         if (this.calibre == grafite.getCalibre()){
             this.tambor.add(grafite);
-
             return true;
         }else{
             System.out.println("fail: calibre incompatível");
@@ -28,14 +31,52 @@ public class Lapiseira {
     }
 
     public Grafite remover(){
-        return null;
+        Grafite grafiteAux = this.bico;
+        this.bico = null;
+
+        return grafiteAux;
     }
 
     public boolean puxar(){
-        return false;
+        if(!this.grafiteEstaCarregado()){
+            if (!tambor.isEmpty()){
+                this.bico = this.tambor.remove(0);
+            }else{
+                System.out.println("fail: nao existe grafite no tambor");
+            }
+            return true;
+        }else{
+            System.out.println("fail: ja existe grafite no bico");
+            return false;
+        }
     }
 
     public void escrever(){
+        if (this.grafiteEstaCarregado()){
+            if (this.bico.getTamanho() > 10){
+                int grafiteResto = this.bico.getTamanho() - this.bico.desgastePorFolha();
 
+                if (grafiteResto <= 10){
+                    System.out.println("fail: folha imcompleta");
+                    this.bico.setTamanho(10);
+                }else{
+                    this.bico.setTamanho(grafiteResto);
+                }
+            }
+
+            if (this.bico.getTamanho() <= 10){
+                System.out.println("warning: grafite acabou");
+            }
+        }else{
+            System.out.println("fail: nao existe grafite no bico");
+        }
+    }
+
+    private boolean grafiteEstaCarregado(){
+        if (this.bico != null){
+            return true;
+        }else {
+            return false;
+        }
     }
 }
