@@ -12,12 +12,11 @@ public class Lapiseira {
         tambor = new ArrayList<Grafite>();
     }
 
-    //ajustar o toString do grafite para quando for null retornar uma String vazia
     public String toString(){
         String valorBico = (this.grafiteEstaCarregado())?this.bico.toString() : "[]";
-        String valorTambor = (!this.tambor.isEmpty())?this.tambor.toString() : "";
+        //String valorTambor = (!this.tambor.isEmpty())?this.tambor.toString() : "";
 
-        return "calibre: " + this.calibre + ", bico: " + valorBico + ", tambor: {" + valorTambor + "}";
+        return "calibre: " + this.calibre + ", bico: " + valorBico + ", tambor: {" + this.arrayListToString() + "}";
     }
 
     public boolean inserir(Grafite grafite){
@@ -78,5 +77,15 @@ public class Lapiseira {
         }else {
             return false;
         }
+    }
+
+    private String arrayListToString(){
+        String stringList = "";
+
+        for (int cont = 0; cont < this.tambor.size(); cont++){
+            stringList += this.tambor.get(cont);
+        }
+
+        return stringList;
     }
 }
