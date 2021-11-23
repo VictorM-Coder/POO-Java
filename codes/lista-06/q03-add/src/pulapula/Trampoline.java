@@ -3,12 +3,20 @@ package pulapula;
 import java.util.LinkedList;
 
 public class Trampoline{
+    public static final double TICKET_PRICE = 2;
     private LinkedList<Kid> waiting;
     private LinkedList<Kid> playing;
+    private int maxAge;
+    private double caixa;
 
     public Trampoline(){
         waiting = new LinkedList<>();
         playing = new LinkedList<>();
+    }
+
+    public Trampoline(int maxAge){
+        this();
+        this.maxAge = maxAge;
     }
 
     public String toString(){
@@ -27,6 +35,9 @@ public class Trampoline{
 
     //remove de playing para wainting
     public void out(){
+        this.playing.get(0).incrementBill();
+        this.incrementSaldo();
+
         this.waiting.add(this.playing.remove(0));
     }
 
@@ -41,15 +52,39 @@ public class Trampoline{
         return kidReturn;
     }
 
+    //retira todas as criancas do pula pula e da fila
+    public void fechar(){
+        this.playing.clear();
+        this.waiting.clear();
+    }
+
+    public double getSaldo(String name){
+        Kid kidReturn = waiting.get(this.searchIndexKidByName(name, this.waiting));
+
+        if (kidReturn == null){
+            kidReturn =  this.playing.get(this.searchIndexKidByName(name, this.playing));
+        }
+
+        return kidReturn.getBill();
+    }
+
+    public double getCaixa() {
+        return caixa;
+    }
+
     //remove and return the Kid with this name or null
     private Kid removeKid(String name, LinkedList<Kid> list){
+        return list.remove(this.searchIndexKidByName(name, list));
+    }
+
+    private int searchIndexKidByName(String name, LinkedList<Kid> list){
         for (int cont = 0; cont < list.size(); cont++){
             if (list.get(cont).getName().equals(name)){
-                return list.remove(cont);
+                return cont;
             }
         }
 
-        return null;
+        return -1;
     }
 
     private String inverseList(LinkedList<Kid> list){
@@ -60,5 +95,9 @@ public class Trampoline{
         }
 
         return inverseList;
+    }
+
+    private void incrementSaldo(){
+        this.caixa += TICKET_PRICE;
     }
 }

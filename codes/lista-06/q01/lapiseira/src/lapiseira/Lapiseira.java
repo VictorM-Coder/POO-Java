@@ -46,7 +46,7 @@ public class Lapiseira {
             if(this.grafite.getTamanho() > 10){
                 int tamanhoResto = this.grafite.getTamanho() - this.grafite.desgastePorFolha();
 
-                if ( tamanhoResto > 10){
+                if ( tamanhoResto >= 10){
                     this.grafite.setTamanho(tamanhoResto);
                 }else{
                     this.grafite.setTamanho(10);
