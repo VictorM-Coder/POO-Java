@@ -12,8 +12,10 @@ public class Solver {
             String[] ui = line.split(" ");
             if(ui[0].equals("end")) {
                 break;
+            } else if(ui[0].equals("init")){
+                tramp = new Trampoline(Integer.parseInt(ui[1]));
             } else if(ui[0].equals("arrive")) { // name age
-                tramp.arrive(new Kid(ui[1], Integer.parseInt(ui[2]))) ;
+                tramp.arrive(new Kid(ui[1], Integer.parseInt(ui[2])));
             } else if(ui[0].equals("in")) {
                 tramp.in();
             } else if(ui[0].equals("out")) {
@@ -26,7 +28,9 @@ public class Solver {
                 System.out.println(tramp.getSaldo(ui[1]));
             }else if (ui[0].equals("caixa")){
                 System.out.println(tramp.getCaixa());
-            } else{
+            } else if(ui[0].equals("fechar")){
+                tramp.fechar();
+            }else{
                 System.out.println("fail: comando invalido");
             }
         }

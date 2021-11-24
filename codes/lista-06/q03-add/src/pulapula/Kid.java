@@ -35,7 +35,7 @@ public class Kid {
         this.age = age;
     }
 
-    private int getAge(){
+    public int getAge(){
         return this.age;
     }
 
