@@ -22,7 +22,7 @@ public class Lapiseira {
             this.grafite = grafite;
             return true;
         }else{
-            System.out.println("fail: calibre incompatível");
+            System.out.println("fail: calibre incompativel");
             return false;
         }
     }

@@ -33,7 +33,7 @@ public class Trampoline{
         if (kid.getAge() <= this.maxAge){
             this.waiting.add(kid);
         }else{
-            System.out.println("fail: criança muito grande");
+            System.out.println("fail: crianca muito grande");
         }
 
     }

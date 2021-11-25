@@ -13,7 +13,13 @@ public class Kid {
         return this.name + ":" + this.age;
     }
 
-    public void setName(String name){
+    //troquei o modificador do getName para público uma vez que assim podemos ter fácil acesso ao nome para a pesquisa realizada na classe Trampoline
+    public String getName(){
+        return this.name;
+    }
+
+    //optei por tornar o setName para private uma vez que não há necessidade, ou situação que justique uma criança mudar de nome neste caso
+    private void setName(String name){
         this.name = name;
     }
 
@@ -23,9 +29,5 @@ public class Kid {
 
     private int getAge(){
         return this.age;
-    }
-
-    public String getName(){
-        return this.name;
     }
 }

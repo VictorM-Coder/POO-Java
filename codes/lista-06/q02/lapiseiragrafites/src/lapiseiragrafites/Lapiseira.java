@@ -14,7 +14,6 @@ public class Lapiseira {
 
     public String toString(){
         String valorBico = (this.grafiteEstaCarregado())?this.bico.toString() : "[]";
-        //String valorTambor = (!this.tambor.isEmpty())?this.tambor.toString() : "";
 
         return "calibre: " + this.calibre + ", bico: " + valorBico + ", tambor: {" + this.arrayListToString() + "}";
     }
@@ -24,7 +23,7 @@ public class Lapiseira {
             this.tambor.add(grafite);
             return true;
         }else{
-            System.out.println("fail: calibre incompatível");
+            System.out.println("fail: calibre incompativel");
             return false;
         }
     }
@@ -55,7 +54,7 @@ public class Lapiseira {
             if (this.bico.getTamanho() > 10){
                 int grafiteResto = this.bico.getTamanho() - this.bico.desgastePorFolha();
 
-                if (grafiteResto <= 10){
+                if (grafiteResto < 10){
                     System.out.println("fail: folha imcompleta");
                     this.bico.setTamanho(10);
                 }else{

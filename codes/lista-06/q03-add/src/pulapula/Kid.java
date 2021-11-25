@@ -23,7 +23,7 @@ public class Kid {
         return this.bill;
     }
 
-    public void setName(String name){
+    private void setName(String name){
         this.name = name;
     }
 
