@@ -29,19 +29,19 @@ public class Fone {
     }
 
     //GETS e SETS
-    String getId(){
-        return this.id;
-    }
-
-    void setId(String id){
-
-    }
-
-    String getNumber(){
+    public String getNumber(){
         return this.number;
     }
 
-    void setNumber(String number){
+    private void setNumber(String number){
+        this.number =number;
+    }
 
+    private String getId(){
+        return this.id;
+    }
+
+    private void setId(String id){
+        this.id = id;
     }
 }

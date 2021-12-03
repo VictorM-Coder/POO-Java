@@ -19,18 +19,20 @@ public class Pass {
     }
 
     //GETS e SETS
-    String getName(){
+    public String getName(){
         return this.name;
     }
-    void setName(String name){
+
+
+    private void setName(String name){
         this.name = name;
     }
 
-    void setAge(int age){
-
+    private void setAge(int age){
+        this.age = age;
     }
 
-    int getAge(){
+    private int getAge(){
         return this.age;
     }
 }

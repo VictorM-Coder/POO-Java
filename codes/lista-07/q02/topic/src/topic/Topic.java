@@ -1,7 +1,7 @@
 package topic;
 
 import java.util.ArrayList;
-//resolver prolema no método in, duplicação de nomes
+
 public class Topic {
     private ArrayList<Pass> prioritySeats;
     private ArrayList<Pass> normalSeats;
@@ -10,12 +10,8 @@ public class Topic {
         this.normalSeats = new ArrayList<>(capacity - qtdPriority);
         this.prioritySeats = new ArrayList<>(qtdPriority);
 
-        for (int cont = 0; cont < capacity - qtdPriority; cont++){
-            this.normalSeats.add(null);
-        }
-        for (int cont = 0; cont < qtdPriority; cont++){
-            this.prioritySeats.add(null);
-        }
+        this.initializeSeats(this.normalSeats, capacity - qtdPriority);
+        this.initializeSeats(this.prioritySeats, qtdPriority);
     }
 
     public String toString(){
@@ -127,5 +123,11 @@ public class Topic {
         }
 
         return out;
+    }
+
+    private void initializeSeats(ArrayList<Pass> passes, int size){
+        for (int cont = 0; cont  < size; cont++){
+            passes.add(null);
+        }
     }
 }

@@ -13,19 +13,19 @@ public class  Client {
         return this.id + ":" + this.fone;
     }
 
-    public void setId(String id){
-
-    }
-
-    public void setFone(String fone){
-
-    }
-
     public String getId(){
         return this.id;
     }
 
-    public String getFone(){
+    private String getFone(){
         return this.fone;
+    }
+
+    private void setId(String id){
+        this.id = id;
+    }
+
+    private void setFone(String fone){
+        this.fone = fone;
     }
 }
