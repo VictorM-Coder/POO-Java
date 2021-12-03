@@ -5,18 +5,27 @@ public class Fone {
     private String number;
 
     public Fone(String id, String number){
-
+        this.id = id;
+        this.number = number;
     }
 
     //O resultado deve ficar assim
     //oi:1234
     public String toString(){
-        return "";
+        return this.id + ":" + this.number;
     }
 
     //verifica se o número é um número de telefone válido
     public static boolean validate(String number){
-        return false;
+        for (int cont  = 0; cont < number.length(); cont++){
+            char character = number.charAt(cont);
+
+            if (!(character == '1' || character == '2'|| character == '3'|| character == '4'|| character == '5'|| character == '6'|| character == '7'|| character == '8'|| character == '9'|| character == '('|| character == ')'|| character == '.')){
+                return false;
+            }
+        }
+
+        return true;
     }
 
     //GETS e SETS

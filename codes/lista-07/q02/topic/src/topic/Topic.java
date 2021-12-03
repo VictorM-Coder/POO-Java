@@ -19,21 +19,9 @@ public class Topic {
     }
 
     public String toString(){
-        String out = "[";
+        String out = "[" + this.getLinePass(this.prioritySeats, '@') + " " + this.getLinePass(this.normalSeats, '=') + "]";
 
-        for (Pass pass: this.prioritySeats){
-            out += "@";
-            if (pass != null){
-                out += pass;
-            }
-        }
-        for (Pass pass: this.normalSeats){
-            out += "=";
-            if (pass != null){
-                out += pass;
-            }
-        }
-        return out + "]";
+        return out;
     }
 
     //return the first free pos or -1
@@ -88,8 +76,7 @@ public class Topic {
     //the pass.isPriority result
     public boolean insert(Pass pass){
         boolean sucess = true;
-        if (this.findByName(pass.getName(), this.normalSeats) == -1){
-
+        if ((this.findByName(pass.getName(), this.normalSeats) == -1) && (this.findByName(pass.getName(), this.prioritySeats) == -1)){
             if (pass.isPriority()){
                 if (!this.insertOnList(pass, this.prioritySeats)){
                     if (!this.insertOnList(pass, this.normalSeats)){
@@ -124,5 +111,21 @@ public class Topic {
         }
 
         return true;
+    }
+
+    private String getLinePass(ArrayList<Pass> passes, char mark){
+        String out = "";
+
+        for (int cont = 0; cont < passes.size(); cont++){
+            out += mark;
+            if (passes.get(cont) != null){
+                out += passes.get(cont);
+            }
+            if (cont != (passes.size() - 1)){
+                out += " ";
+            }
+        }
+
+        return out;
     }
 }
