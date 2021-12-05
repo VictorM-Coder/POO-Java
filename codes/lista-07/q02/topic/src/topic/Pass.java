@@ -6,7 +6,7 @@ public class Pass {
 
     public Pass(String name, int age){
         this.name = name;
-        this.age =age;
+        this.age = age;
     }
 
     public String toString(){
@@ -23,7 +23,7 @@ public class Pass {
         return this.name;
     }
 
-
+    //como não achei necessária a aplicação destes métodos os mantive privados para evitar quebra de encapsulamento
     private void setName(String name){
         this.name = name;
     }

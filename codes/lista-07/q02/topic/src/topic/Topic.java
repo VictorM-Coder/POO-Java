@@ -10,14 +10,58 @@ public class Topic {
         this.normalSeats = new ArrayList<>(capacity - qtdPriority);
         this.prioritySeats = new ArrayList<>(qtdPriority);
 
-        this.initializeSeats(this.normalSeats, capacity - qtdPriority);
-        this.initializeSeats(this.prioritySeats, qtdPriority);
+        initializeSeats(this.normalSeats, capacity - qtdPriority);
+        initializeSeats(this.prioritySeats, qtdPriority);
     }
 
     public String toString(){
-        String out = "[" + this.getLinePass(this.prioritySeats, '@') + " " + this.getLinePass(this.normalSeats, '=') + "]";
+        if (this.prioritySeats.size() == 0 && this.normalSeats.size() == 0){
+            return "[]";
+        }
 
-        return out;
+        return "[" + getLinePass(this.prioritySeats, '@') + " " + getLinePass(this.normalSeats, '=') + "]";
+    }
+
+    //use findByName to test if the pass is already in the topic
+    //use the insertOnList method to insert in the right list based in
+    //the pass.isPriority result
+    public boolean insert(Pass pass){
+        boolean sucess = true;
+        if ((this.findByName(pass.getName(), this.normalSeats) == -1) && (this.findByName(pass.getName(), this.prioritySeats) == -1)){
+            if (pass.isPriority()){
+                if (!this.insertOnList(pass, this.prioritySeats)){
+                    if (!this.insertOnList(pass, this.normalSeats)){
+                        System.out.println("fail: topic lotada");
+                        sucess = false;
+                    }
+                }
+            }else {
+                if (!this.insertOnList(pass, this.normalSeats)){
+                    if (!this.insertOnList(pass, this.prioritySeats)){
+                        System.out.println("fail: topic lotada");
+                        sucess = false;
+                    }
+                }
+            }
+
+        }else{
+            System.out.println("fail: pass ja esta na topic");
+            sucess = false;
+        }
+
+        return sucess;
+    }
+
+    //use the removeFromList method to try to remove from both lists
+    public boolean remove(String name){
+        if (!this.removeFromList(name, this.normalSeats)){
+            if (!this.removeFromList(name, this.prioritySeats)){
+                System.out.println("fail: pass nao esta na topic");
+                return false;
+            }
+        }
+
+        return true;
     }
 
     //return the first free pos or -1
@@ -67,67 +111,36 @@ public class Topic {
        }
     }
 
-    //use findByName to test if the pass is already in the topic
-    //use the insertOnList method to insert in the right list based in
-    //the pass.isPriority result
-    public boolean insert(Pass pass){
-        boolean sucess = true;
-        if ((this.findByName(pass.getName(), this.normalSeats) == -1) && (this.findByName(pass.getName(), this.prioritySeats) == -1)){
-            if (pass.isPriority()){
-                if (!this.insertOnList(pass, this.prioritySeats)){
-                    if (!this.insertOnList(pass, this.normalSeats)){
-                        System.out.println("fail: topic lotada");
-                        sucess = false;
-                    }
-                }
-            }else {
-                if (!this.insertOnList(pass, this.normalSeats)){
-                    if (!this.insertOnList(pass, this.prioritySeats)){
-                        System.out.println("fail: topic lotada");
-                        sucess = false;
-                    }
-                }
-            }
-
-        }else{
-            System.out.println("fail: pass ja esta na topic");
-            sucess = false;
-        }
-
-        return sucess;
-    }
-
-    //use the removeFromList method to try to remove from both lists
-    public boolean remove(String name){
-        if (!this.removeFromList(name, this.normalSeats)){
-            if (!this.removeFromList(name, this.prioritySeats)){
-                System.out.println("fail: pass nao esta na topic");
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    private String getLinePass(ArrayList<Pass> passes, char mark){
+    private static String getLinePass(ArrayList<Pass> passes, char mark){
         String out = "";
 
         for (int cont = 0; cont < passes.size(); cont++){
+            if (cont > 0){
+                out += " ";
+            }
+
             out += mark;
             if (passes.get(cont) != null){
                 out += passes.get(cont);
-            }
-            if (cont != (passes.size() - 1)){
-                out += " ";
             }
         }
 
         return out;
     }
 
-    private void initializeSeats(ArrayList<Pass> passes, int size){
+    private static void initializeSeats(ArrayList<Pass> passes, int size){
         for (int cont = 0; cont  < size; cont++){
             passes.add(null);
         }
+    }
+
+    private static boolean allSeatsAreNull(ArrayList<Pass> passes){
+        for(Pass pass: passes){
+            if (pass != null){
+                return false;
+            }
+        }
+
+        return true;
     }
 }

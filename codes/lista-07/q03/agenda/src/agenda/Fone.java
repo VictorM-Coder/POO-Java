@@ -15,6 +15,11 @@ public class Fone {
         return this.id + ":" + this.number;
     }
 
+
+    public boolean isValid(){
+        return validate(this.number);
+    }
+
     //verifica se o número é um número de telefone válido
     public static boolean validate(String number){
         for (int cont  = 0; cont < number.length(); cont++){
@@ -33,6 +38,7 @@ public class Fone {
         return this.number;
     }
 
+    //tornei estes métodos privados para preservar o encapsulamento
     private void setNumber(String number){
         this.number =number;
     }

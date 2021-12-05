@@ -17,6 +17,7 @@ public class  Client {
         return this.id;
     }
 
+    //tornei estes métodos privados para evitar a quebra de encapsulmento
     private String getFone(){
         return this.fone;
     }

@@ -39,7 +39,7 @@ public class Contact {
     //Se fone for válido, insira no atributo fones
     //Se não, informe o erro
     public void addFone(Fone fone){
-        if(Fone.validate(fone.getNumber())){
+        if(fone.isValid()){
             this.fones.add(fone);
         }else{
             System.out.println("fail: invalid number");
@@ -55,6 +55,7 @@ public class Contact {
 
 
     //GETS e SETS
+    //mantive estes métodos privados para preservar o encapsulamento
     private String getName(){
         return this.name;
     }
@@ -65,5 +66,9 @@ public class Contact {
 
     private ArrayList<Fone> getFones(){
         return this.fones;
+    }
+
+    private void setFones(ArrayList<Fone> fones){
+        this.fones = fones;
     }
 }
