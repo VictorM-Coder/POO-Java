@@ -24,39 +24,43 @@ public class Financas {
     //Crie operação e adiciona ao vetor de operações
     //Incrementa o nextId
     public void addOperacao(Label label, int value){
-        switch (label){
-            case ABERTURA:
-                this.saldo = value;
-                break;
+        value = Math.abs(value);
 
-            case DEPOSITO:
+        switch (label){
+            case ABERTURA: case DEPOSITO: case EXTORNO:
                 this.saldo += value;
                 break;
 
-            case SAQUE:
+            case SAQUE: case TARIFA:
                 this.saldo -= value;
-                break;
-
-            case TARIFA:
-                this.saldo -= value;
-                break;
-
-            case EXTORNO:
+                value *= -1;
                 break;
         }
 
         this.extrato.add(new Operacao(this.nextId, label, value, this.saldo));
+        this.nextId++;
+    }
+
+    public List<Operacao> getExtrato(int qtdOp){
+        List<Operacao> lastValuesList = new ArrayList<Operacao>(qtdOp);
+
+        for (int cont = this.nextId - qtdOp; cont < this.nextId; cont++){
+            lastValuesList.add(this.extrato.get(cont));
+        }
+
+        return lastValuesList;
     }
 
     public int getSaldo(){
         return this.saldo;
     }
 
+    public int getNextId(){
+        return this.nextId;
+    }
+
     List<Operacao> getExtrato(){
         return this.extrato;
     }
 
-    public List<Operacao> getExtrato(int qtdOp){
-        return this.extrato;
-    }
 }

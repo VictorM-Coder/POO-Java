@@ -28,12 +28,28 @@ public class Conta {
 
     //retira o dinheiro, mesmo que o saldo fique negativo
     public boolean tarifar(int value){
-        return false;
+        this.financas.addOperacao(Label.TARIFA, value);
+        return true;
     }
 
     //se o índice for válido e representar uma operação de tarifa
     //adicione o mesmo valor tarifado, mas com label de extorno
     public boolean extornar(int indice){
+
+        if (indice < this.financas.getNextId() && indice >= 0){
+            Operacao operacao = this.financas.getExtrato().get(indice);
+
+            if (operacao.getLabel() == Label.TARIFA){
+                this.financas.addOperacao(Label.EXTORNO, operacao.getValue());
+
+                return true;
+            }else{
+                System.out.println("fail: indice " + indice + " nao e tarifa");
+            }
+        }else{
+            System.out.println("fail: indice " + indice + " invalido");
+        }
+
         return false;
     }
 
