@@ -24,19 +24,21 @@ public class Operacao {
         return pad("" + indice, 2) + ":" + pad("" + label, 9) + ":" + pad("" + value, 5) + ":" + pad("" + saldo, 5);
     }
 
-    int getIndice() {
-        return this.indice;
-    }
-
-    Label getLabel() {
+    //GETS AND SETS
+    public Label getLabel() {
         return this.label;
     }
 
-    int getValue() {
+    public int getValue() {
         return this.value;
     }
 
-    int getSaldo() {
+    //torneir estes métodos privados para presevar o encapsualmento, já que não foi necessário seu nesta aplicação
+    private int getIndice() {
+        return this.indice;
+    }
+
+    private int getSaldo() {
         return this.saldo;
     }
 };

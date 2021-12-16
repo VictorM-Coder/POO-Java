@@ -1,6 +1,7 @@
 package agencia;
 
 public enum Label {
+    //modifiquei os valores para que seguissem as convenções de nomeclatura
     SAQUE("saque"),
     DEPOSITO("deposito"),
     TARIFA("tarifa"),
@@ -12,7 +13,7 @@ public enum Label {
     private Label(String name) {
         this.name = name;
     }
-    String getName() {
+    public String getName() {
         return this.name;
     }
     public String toString() {

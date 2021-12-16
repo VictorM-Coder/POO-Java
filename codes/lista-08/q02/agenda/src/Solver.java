@@ -1,4 +1,6 @@
-package agenda1;
+import agenda1.Agenda;
+import agenda1.Contact;
+import agenda1.Fone;
 
 import java.util.Arrays;
 import java.util.Scanner;

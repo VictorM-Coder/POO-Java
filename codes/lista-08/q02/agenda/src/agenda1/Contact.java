@@ -54,6 +54,7 @@ public class Contact {
         }
     }
 
+    //GETS e SETS
     public String getName(){
         return this.name;
     }
@@ -62,9 +63,7 @@ public class Contact {
         return this.fones;
     }
 
-    //GETS e SETS
     //mantive estes métodos privados para preservar o encapsulamento
-
     private void setName(String name){
         this.name = name;
     }

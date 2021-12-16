@@ -64,7 +64,7 @@ public class Conta {
         return false;
     }
 
-    Financas getFinancas(){
+    public Financas getFinancas(){
         return this.financas;
     }
 }

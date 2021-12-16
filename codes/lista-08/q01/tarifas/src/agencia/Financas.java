@@ -16,6 +16,7 @@ public class Financas {
         this.nextId = 0;
     }
 
+    @Override
     public String toString(){
         return "saldo:" + this.saldo;
     }
@@ -59,7 +60,7 @@ public class Financas {
         return this.nextId;
     }
 
-    List<Operacao> getExtrato(){
+    public List<Operacao> getExtrato(){
         return this.extrato;
     }
 

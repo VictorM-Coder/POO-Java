@@ -84,8 +84,8 @@ public class Agenda {
         return -1;
     }
 
-
-    public List<Contact> getContacts(){
+    //tornei este get privado para preservar o encapsulamento, já que não há ncessidade de seu uso nesta aplicação
+    private List<Contact> getContacts(){
         return this.contacts;
     }
 }
