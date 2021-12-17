@@ -14,7 +14,7 @@ public abstract class Account {
 
     @Override
     public String toString(){
-        return "";
+        return String.format("%d:%s:%f:%c", this.id, this.clientId, this.balance, this.type);
     }
 
     //abstract method
@@ -22,16 +22,30 @@ public abstract class Account {
 
     //saque
     public void withdraw(float value){
-
+        if (isBalanceEnough(value)){
+            this.balance -= value;
+        }
     }
+
     //deposito
     public void deposit(float value){
-
+        this.balance += value;
     }
 
     //transferencia para outra conta
     public void transfer(Account other, float value){
+        if (this.isBalanceEnough(value)){
+            this.withdraw(value);
+            other.deposit(value);
+        }
+    }
 
+    private boolean isBalanceEnough(float value){
+        if (this.balance >= value){
+            return true;
+        }
+        System.out.println("fail: saldo insuficiente");
+        return false;
     }
 
     //GETS and SETS
