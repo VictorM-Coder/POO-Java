@@ -5,8 +5,7 @@ import cadastro.accounts.AccountException;
 import cadastro.accounts.CheckingAccount;
 import cadastro.accounts.SavingsAccount;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class BankAgency {
     private Map<String, Client> clients;
@@ -20,7 +19,10 @@ public class BankAgency {
 
     @Override
     public String toString(){
-        return "";
+        return "Clients:\n" +
+                this.clientsToString() +
+                "Accounts:\n" +
+                this.accountsToString();
     }
 
     //se o cliente não existir
@@ -36,6 +38,7 @@ public class BankAgency {
 
     //obtem o cliente e invoca as ações
     public void withdraw(int idConta, float value){
+
         this.accounts.get(idConta).withdraw(value);
     }
 
@@ -53,28 +56,30 @@ public class BankAgency {
         }
     }
 
-    //obtém conta ou lança excessão
-    private Account getAccount(int id){
-        Account account;
-
-        try{
-            account = this.accounts.get(id);
-            return account;
-        }catch (RuntimeException e){
+    /**
+     *
+     * @param id
+     * @return a conta pertencente ao id
+     * @throws AccountException
+     */
+    private Account getAccount(int id) throws AccountException{
+        if (this.accounts.containsKey(id)){
+            return this.accounts.get(id);
+        }else{
             throw new AccountException("fail: conta nao encontrada");
         }
     }
 
     private void registerClient(String clientId){
         Client client = new Client(clientId);
-        Account savingAccount = new SavingsAccount(this.nextAccountId, clientId);
+
         Account checkingAccount = new CheckingAccount(this.nextAccountId, clientId);
-
-        client.addAccount(savingAccount);
         client.addAccount(checkingAccount);
-
-        this.addAccount(savingAccount);
         this.addAccount(checkingAccount);
+
+        Account savingAccount = new SavingsAccount(this.nextAccountId, clientId);
+        client.addAccount(savingAccount);
+        this.addAccount(savingAccount);
 
         this.clients.put(clientId, client);
     }
@@ -87,7 +92,15 @@ public class BankAgency {
     private String clientsToString(){
         String out = "";
 
-        return "";
+        List<Client> clients = new ArrayList<>(this.clients.values());
+
+        Collections.sort(clients);
+
+        for (Client client: clients){
+            out += client + "\n";
+        }
+
+        return out;
     }
 
     private String accountsToString(){

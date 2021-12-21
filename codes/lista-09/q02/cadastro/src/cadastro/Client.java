@@ -2,14 +2,16 @@ package cadastro;
 
 import cadastro.accounts.Account;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Client {
+public class Client implements Comparable{
     private String clientId;
     private List<Account> accounts;
 
     public Client(String clientId){
         this.clientId = clientId;
+        this.accounts = new ArrayList<Account>();
     }
 
     public String toString(){
@@ -29,6 +31,11 @@ public class Client {
         }
 
         return out + "]";
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        return this.accounts.get(0).getId() - ((Client) o).accounts.get(0).getId();
     }
 
     //GETS and SETS

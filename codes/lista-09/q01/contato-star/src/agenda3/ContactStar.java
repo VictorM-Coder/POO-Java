@@ -11,6 +11,7 @@ public class ContactStar  extends Contact {
         this.star = star;
     }
 
+    @Override
     public String toString(){
         return super.toString();
     }
