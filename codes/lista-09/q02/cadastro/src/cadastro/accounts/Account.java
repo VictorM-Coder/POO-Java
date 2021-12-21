@@ -14,7 +14,7 @@ public abstract class Account {
 
     @Override
     public String toString(){
-        return  (this.id +":"+ this.clientId +":"+ this.balance +":"+ this.type);
+        return String.format("%d:%s:%.2f:%s", this.id, this.clientId, this.balance, this.type);
     }
 
     //abstract method

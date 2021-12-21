@@ -38,16 +38,27 @@ public class BankAgency {
 
     //obtem o cliente e invoca as ações
     public void withdraw(int idConta, float value){
-
-        this.accounts.get(idConta).withdraw(value);
+        try{
+            this.getAccount(idConta).withdraw(value);
+        }catch (AccountException accountException){
+            System.out.println(accountException.getMessage());
+        }
     }
 
     public void deposit(int idConta, float value){
-        this.accounts.get(idConta).deposit(value);
+        try{
+            this.getAccount(idConta).deposit(value);
+        }catch (AccountException accountException){
+            System.out.println(accountException.getMessage());
+        }
     }
 
     public void transfer(int contaDe, int contaPara, float value){
-        this.accounts.get(contaDe).transfer(this.accounts.get(contaPara), value);
+        try{
+            this.getAccount(contaDe).transfer(this.getAccount(contaPara), value);
+        }catch (AccountException accountException){
+            System.out.println(accountException.getMessage());
+        }
     }
 
     public void monthlyUpdate(){
@@ -57,13 +68,12 @@ public class BankAgency {
     }
 
     /**
-     *
      * @param id
      * @return a conta pertencente ao id
      * @throws AccountException
      */
     private Account getAccount(int id) throws AccountException{
-        if (this.accounts.containsKey(id)){
+        if (this.accounts.get(id) != null){
             return this.accounts.get(id);
         }else{
             throw new AccountException("fail: conta nao encontrada");
