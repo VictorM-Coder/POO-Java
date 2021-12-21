@@ -30,7 +30,7 @@ public class AgendaStar extends Agenda {
         Contact contact = this.findContact(name);
 
         if (contact instanceof ContactStar){
-            ((ContactStar) contact).setStar(true);
+            ((ContactStar) contact).setStar(value);
         }
     }
 }

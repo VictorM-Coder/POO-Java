@@ -25,6 +25,8 @@ public class Agenda {
 
         if (indexContact != -1){
             return this.contacts.get(indexContact);
+        }else{
+            System.out.println("fail: contato " + name + " nao existe");
         }
 
         return null;
