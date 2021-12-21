@@ -20,19 +20,29 @@ public abstract class Account {
     //abstract method
     public abstract void monthlyUpdate();
 
-    //saque
+    /**
+     * realiza o saque na conta
+     * @param value valor que será sacado
+     */
     public void withdraw(float value){
         if (isBalanceEnough(value)){
             this.balance -= value;
         }
     }
 
-    //deposito
+    /**
+     * realiza o depósito na conta
+     * @param value valor que será depositado
+     */
     public void deposit(float value){
         this.balance += value;
     }
 
-    //transferencia para outra conta
+    /**
+     * realiza a retirada de um valor em uma conta e o depósito em outra
+     * @param other conta para qual o valor será transferido
+     * @param value valor que será transferido
+     */
     public void transfer(Account other, float value){
         if (this.isBalanceEnough(value)){
             this.withdraw(value);
@@ -49,7 +59,7 @@ public abstract class Account {
     }
 
     //GETS and SETS
-    int getId(){
+    public int getId(){
         return this.id;
     }
 

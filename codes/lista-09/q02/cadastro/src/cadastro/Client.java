@@ -13,11 +13,22 @@ public class Client {
     }
 
     public String toString(){
-        return "";
+        return "- " + this.clientId + this.accountsIdToString();
     }
 
     public void addAccount(Account account){
+        this.accounts.add(account);
+    }
 
+    private String accountsIdToString(){
+        String out = "[";
+        for (int cont = 0; cont < this.accounts.size(); cont++){
+            out += this.accounts.get(cont).getId();
+
+            out += (cont < (this.accounts.size() - 1))? ",": "";
+        }
+
+        return out + "]";
     }
 
     //GETS and SETS
