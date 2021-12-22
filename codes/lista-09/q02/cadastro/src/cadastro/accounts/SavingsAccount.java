@@ -11,4 +11,9 @@ public class SavingsAccount extends Account {
     public void monthlyUpdate(){
         this.balance *= 1.01;
     }
+
+    @Override
+    public String toString(){
+        return super.toString();
+    }
 }

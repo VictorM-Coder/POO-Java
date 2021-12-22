@@ -1,5 +1,6 @@
-package cadastro;
+package cadastro.bank;
 
+import cadastro.clients.Client;
 import cadastro.accounts.Account;
 import cadastro.accounts.AccountException;
 import cadastro.accounts.CheckingAccount;

@@ -1,4 +1,4 @@
-package cadastro;
+package cadastro.clients;
 
 import cadastro.accounts.Account;
 
@@ -39,18 +39,20 @@ public class Client implements Comparable{
     }
 
     //GETS and SETS
-    String getClientId(){
+    //tornei estes métodos privados para preservar o encapsulamento. tendo em vista que não foi necessário o seu uso
+    private String getClientId(){
         return this.clientId;
     }
 
-    void setClientId(String clientId){
+    private void setClientId(String clientId){
         this.clientId = clientId;
     }
 
-    List<Account> getAccounts(){
+    private List<Account> getAccounts(){
         return this.accounts;
     }
-    void setAccounts(List<Account> accounts){
+
+    private void setAccounts(List<Account> accounts){
         this.accounts = accounts;
     }
 }

@@ -63,15 +63,16 @@ public abstract class Account {
         return this.id;
     }
 
-    float getBalance(){
+    //tornei estes métodos privados para preservar o encapsulamento. tendo em vista que não foi necessário o seu uso
+    private float getBalance(){
         return this.balance;
     }
 
-    public String getClientId(){
+    private String getClientId(){
         return this.clientId;
     }
 
-    String getType(){
+    private String getType(){
         return this.type;
     }
 }

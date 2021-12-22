@@ -1,4 +1,6 @@
-package agenda3;
+package agenda3.contacts;
+
+import agenda3.fones.Fone;
 
 import java.util.List;
 

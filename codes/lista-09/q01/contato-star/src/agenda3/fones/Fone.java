@@ -1,4 +1,4 @@
-package agenda3;
+package agenda3.fones;
 
 public class Fone {
     private String id;

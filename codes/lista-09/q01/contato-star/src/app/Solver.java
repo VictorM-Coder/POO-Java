@@ -1,8 +1,8 @@
-package teste;
+package app;
 
-import agenda3.AgendaStar;
-import agenda3.ContactStar;
-import agenda3.Fone;
+import agenda3.agendas.AgendaStar;
+import agenda3.contacts.ContactStar;
+import agenda3.fones.Fone;
 
 import java.util.Arrays;
 import java.util.Scanner;

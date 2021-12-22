@@ -1,4 +1,7 @@
-package agenda3;
+package agenda3.agendas;
+
+import agenda3.contacts.Contact;
+import agenda3.fones.Fone;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +89,6 @@ public class Agenda {
         return -1;
     }
 
-    //tornei este get privado para preservar o encapsulamento, já que não há ncessidade de seu uso nesta aplicação
     public List<Contact> getContacts(){
         return this.contacts;
     }

@@ -1,7 +1,7 @@
-package teste;
+package app;
 
 import cadastro.accounts.AccountException;
-import cadastro.BankAgency;
+import cadastro.bank.BankAgency;
 
 import java.util.Locale;
 import java.util.Scanner;

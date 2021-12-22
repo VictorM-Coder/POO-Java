@@ -1,4 +1,7 @@
-package agenda3;
+package agenda3.agendas;
+
+import agenda3.contacts.Contact;
+import agenda3.contacts.ContactStar;
 
 import java.util.LinkedList;
 import java.util.List;
