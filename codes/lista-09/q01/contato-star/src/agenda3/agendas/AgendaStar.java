@@ -18,7 +18,7 @@ public class AgendaStar extends Agenda {
 
     //filtre em uma nova lista apenas os contatos que forem do tipo ContatoStar e que estão favoritados
     public List<Contact> getStarred(){
-        List out = new LinkedList<Contact>();
+        List<Contact> out = new LinkedList<Contact>();
 
         for (Contact contact: this.getContacts()){
             if (((ContactStar) contact).getStar()){
