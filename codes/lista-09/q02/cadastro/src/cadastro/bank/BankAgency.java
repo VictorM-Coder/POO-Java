@@ -103,7 +103,7 @@ public class BankAgency {
     private String clientsToString(){
         String out = "";
 
-        List<Client> clients = new ArrayList<>(this.clients.values());
+        List<Client> clients = new ArrayList<Client>(this.clients.values());
 
         Collections.sort(clients);
 
